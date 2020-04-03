@@ -1,3 +1,5 @@
+package opdracht4;
+
 import javax.swing.*;
 import java.awt.*;
 
