@@ -3,26 +3,21 @@ package opdracht4;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.Observable;
+import java.util.Random;
 
 public class Model extends Observable {
-    int counter = 0;
-    private PropertyChangeSupport pcs = new PropertyChangeSupport(this);
+    String[] names = {"Jeffrey", "Jordan", "Dylan", "Bram", "Andy"};
+    String chosenName = "";
     public Model() {
 
     }
-    public void addPropertyChangeListener(PropertyChangeListener listener) {
-        this.pcs.addPropertyChangeListener(listener);
+    public void setName(){
+        int randomNumber = new Random().nextInt(names.length);
+        chosenName = names[randomNumber];
+        setChanged();
+        notifyObservers();
     }
-    public void removePropertyChangeListener(PropertyChangeListener listener) {
-        this.pcs.removePropertyChangeListener(listener);
-    }
-    public void increase(){
-        int oldvalue = counter;
-        counter++;
-
-        this.pcs.firePropertyChange("counter", oldvalue, counter);
-    }
-    public Integer getCounter() {
-        return counter;
+    public String getName() {
+        return chosenName;
     }
 }
