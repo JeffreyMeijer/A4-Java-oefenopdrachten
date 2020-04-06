@@ -1,6 +1,10 @@
+package opdracht4;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -15,19 +19,18 @@ public class Controller extends JPanel implements Observer {
         view = new View();
         this.add(view);
 
-        clickButton = new JButton("+1");
+        clickButton = new JButton("Generate name");
         clickButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                model.increase();
-//                view.setDisplay(model.getCounter().toString());
+                model.setName();
             }
         });
         this.add(clickButton);
     }
     @Override
     public void update(Observable o, Object arg) {
-        view.setDisplay(model.getCounter().toString());
+        view.setDisplay(model.getName());
     }
 }
 
